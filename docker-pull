@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-: ${1:?"usage docker-push user/name"}
+: ${1:?"usage docker-pull user/name"}
 
 boot2docker ssh sudo mkdir -p /var/lib/docker/stack
 boot2docker ssh sudo chown -R docker /var/lib/docker/stack
