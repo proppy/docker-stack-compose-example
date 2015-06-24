@@ -1,0 +1,13 @@
+#!/bin/bash
+
+MACHINE=${MACHINE:-demo}
+
+if [ -z "$2" ]; then
+    TARGET=$(basename $1)
+else
+    TARGET=$2
+fi
+
+docker-machine ssh $MACHINE "sudo mkdir -p /var/lib/docker/stack"
+docker-machine ssh $MACHINE "sudo chown -R docker /var/lib/docker/stack"
+docker-machine ssh $MACHINE "git clone /var/lib/docker/stack/$1 $(PWD)/$TARGET || git clone https://github.com/$1 $(PWD)/$TARGET"
