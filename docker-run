@@ -1,0 +1,5 @@
+set -ex
+
+: ${1:?"usage docker-run user/name"}
+
+docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker docker-compose bash -c "cd /var/lib/docker/stack/$1 && docker-compose up"
