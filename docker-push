@@ -1,0 +1,7 @@
+#!/bin/bash
+set -ex
+
+boot2docker ssh sudo mkdir -p /var/lib/docker/stack
+boot2docker ssh sudo chown -R docker /var/lib/docker/stack
+boot2docker ssh git init /var/lib/docker/stack/$1
+boot2docker ssh "sh -c \"cd /var/lib/docker/stack/$1 && git pull https://github.com/$1.git\""
