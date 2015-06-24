@@ -1,9 +1,12 @@
 #!/bin/bash
 set -ex
+ 
+: ${1:?"usage docker-push user/name"}
 
-: ${1:?"usage docker-pull user/name"}
+MACHINE=${MACHINE:-demo}
+ 
+docker-machine ssh $MACHINE sudo mkdir -p /var/lib/docker/stack
+docker-machine ssh $MACHINE sudo chown -R docker /var/lib/docker/stack
+docker-machine ssh $MACHINE git init /var/lib/docker/stack/$1
+docker-machine ssh $MACHINE "sh -c \"cd /var/lib/docker/stack/$1 && git pull https://github.com/$1.git\""
 
-boot2docker ssh sudo mkdir -p /var/lib/docker/stack
-boot2docker ssh sudo chown -R docker /var/lib/docker/stack
-boot2docker ssh git init /var/lib/docker/stack/$1
-boot2docker ssh "sh -c \"cd /var/lib/docker/stack/$1 && git pull https://github.com/$1.git\""
