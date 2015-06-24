@@ -1,0 +1,12 @@
+set -ex
+
+: ${1:?'usage: docker ARGS...'}
+
+cmd=$1
+shift
+if [[ -f "docker-$cmd" ]]; then
+    ./docker-$cmd $*
+else
+    docker $cmd $*
+fi
+
