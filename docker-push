@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 
+: ${1:?"usage docker-push user/name"}
+
 boot2docker ssh sudo mkdir -p /var/lib/docker/stack
 boot2docker ssh sudo chown -R docker /var/lib/docker/stack
 boot2docker ssh git init /var/lib/docker/stack/$1
