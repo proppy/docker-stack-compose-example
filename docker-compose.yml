@@ -1,4 +1,4 @@
 web:
   image: nginx
 db:
-  image: mysql
+  image: redis

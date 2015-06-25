@@ -44,7 +44,7 @@ func main() {
 	//
 	//
 
-	commandString = "docker-machine ssh " + argsWithoutProg[3] + " -- sudo cp " + argsWithoutProg[2] + " /var/lib/docker/stack/" + argsWithoutProg[1]
+	commandString = "docker-machine ssh " + argsWithoutProg[3] + " -- sudo cp -R " + argsWithoutProg[2] + " /var/lib/docker/stack/" + argsWithoutProg[1]
 	// cmd docker-machine ssh dev1 -- sudo cp wordpress-mysql /var/lib/docker/stack/myself/wordpress-mysql
 	fmt.Println("cmd", commandString)
 	words = strings.Split(commandString, " ")

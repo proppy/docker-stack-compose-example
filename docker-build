@@ -1,0 +1,9 @@
+#!/bin/bash
+set -ex
+ 
+: ${1:?"usage docker-build user/name"}
+
+MACHINE=${MACHINE:-demo}
+
+./dbuild/dbuild $* ${MACHINE}
+

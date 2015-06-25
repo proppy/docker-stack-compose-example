@@ -1,2 +1,2 @@
 FROM python
-RUN pip install -U docker-compose
+RUN pip install docker-compose==1.2.0
